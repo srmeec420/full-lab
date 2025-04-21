@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title>Simple validation form</title>
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                background: rgb(72, 200, 225);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .container{
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: greenyellow;
+                width: 300px;
+            }
+            input,button{
+                width: 100%;
+                padding: 10px;
+                margin: 8px;
+                border-radius: 5px;
+                
+            }
+            .error{
+                color: red;
+                font-size: 14px;
+            }
+            button{
+                color: white;
+                background: blue;
+                cursor: pointer;
+            }
+            button:hover{
+                background: darkblue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Registration form</h2>
+            <form id="myform">
+
+            <input type="text" id="name" placeholder="Full Name">
+            <div class="error" id="nameErr"></div>
+
+            <input type="email" id="email" placeholder="Email">
+            <div class="error" id="emailErr"></div>
+
+            <input type="password" id="pass" placeholder="Password">
+            <div class="error" id="passErr"></div>
+
+            <input type="number" id="age" placeholder="Age">
+            <div class="error" id="ageErr"></div>
+
+            <button type="submit">Submit</button>
+        </form>
+        </div>
+        <script>
+            document.getElementById("myform").addEventListener("submit",function(event){
+                event.preventDefault();
+
+                let name=document.getElementById("name").value.trim();
+                let email=document.getElementById("email").value.trim();
+                let pass=document.getElementById("pass").value.trim();
+                let age=document.getElementById("age").value;
+
+                let valid=true;
+
+                nameErr.textContent="";
+                emailErr.textContent="";
+                passErr.textContent="";
+                ageErr.textContent="";
+
+                if(name.length<3){
+                    nameErr.textContent="Name must be atleast 3 letters.";
+                    valid=false;
+                }
+
+                if(pass.length<6){
+                    passErr.textContent="Password must be atleast 6 character";
+                    valid=false;
+                }
+
+                if(age<18){
+                    ageErr.textContent="You must atleast 18 years old";
+                    valid=false;
+                }
+
+                if(valid){
+                    alert("Form Submitted Sucessfully")
+                    this.reset();
+                }
+
+            })
+        </script>
+    </body>
+</html>
