@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Simple Form</title> 
+</head> 
+<body> 
+    <h2>User Information Form</h2> 
+    <form id="userForm" onsubmit="return validateForm()"> 
+        <label for="name">Name:</label><br> 
+        <input type="text" id="name" name="name"><br> 
+        <label for="email">Email:</label><br> 
+        <input type="email" id="email" name="email"><br> 
+        <label for="department">Department:</label><br> 
+        <input type="text" id="department" name="department"><br> 
+        <label for="age">Age:</label><br> 
+        <input type="number" id="age" name="age"><br> 
+        <input type="submit" value="Submit"> 
+    </form> 
+
+    <div id="successMessage" style="display:none; color: green; margin-top: 20px;">Form submitted successfully!</div>
+
+    <script> 
+        function validateForm() { 
+            const name = document.getElementById("name").value; 
+            const email = document.getElementById("email").value; 
+            const department = document.getElementById("department").value; 
+            const age = document.getElementById("age").value; 
+
+            if (!name) { 
+                alert("Name is required."); 
+                return false; 
+            } 
+
+            if (!email) { 
+                alert("Email is required."); 
+                return false; 
+            } 
+
+            if (!department) { 
+                alert("Department is required."); 
+                return false; 
+            } 
+
+            if (!age) { 
+                alert("Age is required."); 
+                return false; 
+            } 
+
+            // If all fields are valid, show the success message and return false to prevent form submission.
+            document.getElementById("successMessage").style.display = "block";
+            return false; // Prevent form from submitting, just show the success message.
+        } 
+    </script> 
+</body> 
+</html>
